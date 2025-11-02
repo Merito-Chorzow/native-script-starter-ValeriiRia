@@ -1,4 +1,6 @@
-<ActionBar title="Details"></ActionBar>
+<ActionBar title="Product Details"></ActionBar>
 <StackLayout class="p-20">
-    <Label text="Product Details View"></Label>
+  <Label [text]="'Product ID: ' + productId" class="h2 mb-10"></Label>
+  <Label text="This is where the detailed information will go." class="body"></Label>
+  <Button text="Delete product" class="btn btn-danger mt-20" (tap)="onDelete()"></Button>
 </StackLayout>

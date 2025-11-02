@@ -1,13 +1,18 @@
 <ActionBar title="Inventory">
-    <ActionItem text="Add" [nsRouterLink]="['/add-product']"
-        ios.position="right" android.position="actionBar"></ActionItem>
+  <ActionItem text="Settings" ios.position="right" (tap)="onSettingsTap()"></ActionItem>
 </ActionBar>
 
-<ListView [items]="products$ | async" class="list-group">
+<StackLayout>
+  <Button text="Add New Product" (tap)="onAddTap()" class="-primary m-10"></Button>
+
+  <ListView [items]="products$ | async" class="list-group" (itemTap)="onItemTap($event)">
     <ng-template let-item="item">
-        <StackLayout class="list-group-item p-15">
-            <Label [text]="item.title" class="font-bold"></Label>
-            <Label [text]="'ID: ' + item.id" class="text-sm"></Label>
-        </StackLayout>
+      <StackLayout class="list-group-item p-15">
+        <Label [text]="item.title" class="font-bold"></Label>
+        <Label [text]="'Body Preview: ' + item.body" class="text-sm"></Label>
+        <Label [text]="'ID: ' + item.id" class="text-sm"></Label>
+        <Button text="Delete" class="btn btn-danger mt-5" (tap)="onDelete(item.id)"></Button>
+      </StackLayout>
     </ng-template>
-</ListView>
+  </ListView>
+</StackLayout>

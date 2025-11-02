@@ -1,25 +1,27 @@
 import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
-import { NativeScriptCommonModule, NativeScriptRouterModule } from '@nativescript/angular';
-import { Observable } from 'rxjs';
-import { ApiService, Product } from '../../services/api.service';
+import { NativeScriptCommonModule } from '@nativescript/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from '../../services/api.service';
 
 @Component({
-  selector: 'ns-product-list',
+  selector: 'ns-product-details',
   standalone: true,
-  imports: [
-    NativeScriptCommonModule, 
-    NativeScriptRouterModule
-  ], 
+  imports: [NativeScriptCommonModule],
   templateUrl: './product-details.component.html',
-  schemas: [NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class ProductDetailsComponent implements OnInit {
-  
-  public products$: Observable<Product[]>;
+  public productId: number;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.products$ = this.apiService.getProducts();
+    this.productId = Number(this.route.snapshot.params['id']);
+  }
+
+  onDelete(): void {
+    this.api.deleteProduct(this.productId).subscribe(() => {
+      this.router.navigate(['/products']);
+    });
   }
 }
