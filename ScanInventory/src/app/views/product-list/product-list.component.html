@@ -1,5 +1,13 @@
-<ActionBar title="Inventory"></ActionBar>
-<StackLayout class="p-20">
-    <Label text="Product List View"></Label>
-    <Button text="Add Product" [nsRouterLink]="['/add-product']" class="-primary"></Button>
-</StackLayout>
+<ActionBar title="Inventory">
+    <ActionItem text="Add" [nsRouterLink]="['/add-product']"
+        ios.position="right" android.position="actionBar"></ActionItem>
+</ActionBar>
+
+<ListView [items]="products$ | async" class="list-group">
+    <ng-template let-item="item">
+        <StackLayout class="list-group-item p-15">
+            <Label [text]="item.title" class="font-bold"></Label>
+            <Label [text]="'ID: ' + item.id" class="text-sm"></Label>
+        </StackLayout>
+    </ng-template>
+</ListView>
