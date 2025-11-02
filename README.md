@@ -10,19 +10,26 @@ Zbuduj podstawową aplikację w **NativeScript używając framework Angular**, k
 - **API (min. 1 endpoint):** pobranie listy elementów lub zapis nowego.
 - **Widoki (3–4):**
   1. **Lista produktów** (nazwa, kod, mini-status).
+
+  ![alt text](image.png)
+
   2. **Szczegóły produktu** (opis, zdjęcie/skan, akcje: usuń/edytuj).
+
+  ![alt text](image-2.png)
+
   3. **Dodaj produkt** (formularz + akcja natywna, np. „zeskanuj/zdjęcie”).
+
+  ![alt text](image-3.png)
+
   4. *(Opcjonalnie)* **Ustawienia** (np. preferencje, tryb offline).
-- **Walidacja:** minimalna w formularzu (np. wymagane pola).
 
-## Testowanie lokalne (w trakcie developmentu)
-- Uruchom na **urządzeniu/emulatorze**.
-- Pokaż: dodanie produktu z użyciem **natywnej funkcji** (np. zdjęcie/skan), pojawienie się na liście.
-- Pokaż komunikację z **API** (pobranie/zapis) i zachowanie przy błędach/uprawnieniach.
+  ![alt text](image-4.png)
 
-## Definition of Done (DoD)
-- [ ] 3–4 widoki + nawigacja.
-- [ ] Co najmniej 1 **natywna funkcja**.
-- [ ] Integracja z **API** (GET/POST).
-- [ ] Walidacja formularza + podstawowa obsługa błędów.
-- [ ] Aktualizacja `README.md`, zrzuty ekranów, min. 3 commity.
+**** Installation and Setup
+
+Navigate to the Project Folder: Open your terminal and change the directory to the project folder
+- cd ScanInventory
+Install Dependencies: Install all required Node.js packages and NativeScript dependencies:
+- npm install
+Run the Application: Execute the following command to build, install, and launch the application on your Android emulator or device:
+- ns run android
